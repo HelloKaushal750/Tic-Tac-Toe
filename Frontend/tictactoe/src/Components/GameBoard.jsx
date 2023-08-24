@@ -62,18 +62,27 @@ function GameBoard() {
 
   return (
     <div className="tictactoegame">
-      <div>
+      <div class="fade-in-heading">
         <h1 className="heading">Welcome To Tic-Tac-Toe</h1>
       </div>
-      <div className="winnername">{renderWinnerMessage()}</div>
       <div className="game_board">
         {board?.map((value, index) => {
-          return <button onClick={() => handleClick(index)}>{value}</button>;
+          return (
+            <button
+              onClick={() => handleClick(index)}
+              style={
+                value === "X" ? { color: "#0d9bea" } : { color: "#fe0202" }
+              }
+            >
+              {value}
+            </button>
+          );
         })}
       </div>
+      <div className="winnername">{renderWinnerMessage()}</div>
       <div>
         <button onClick={handleNewGame} className="newgame">
-          Start New Game
+          New Game
         </button>
       </div>
     </div>

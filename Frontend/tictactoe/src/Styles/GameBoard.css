@@ -18,15 +18,19 @@
   width: 25%;
   margin: auto;
   margin-top: 60px;
+  animation: fadeIn 4s;
 }
 .game_board button {
-  padding: 20px;
-  font-size: 30px;
+  font-size: 50px;
+  font-weight: 900;
   border-radius: 15px;
-  background-color: white;
   cursor: pointer;
   height: 90px;
+  background-image: url("https://t4.ftcdn.net/jpg/02/06/43/25/360_F_206432580_N7sB3eqnOh93f7F1KaqVGl5knRi92khF.jpg");
+  background-size: cover;
+  border: 2px solid white;
 }
+/* #fe0202 */
 .newgame {
   font-size: 20px;
   border-radius: 15px;
@@ -36,6 +40,7 @@
   color: white;
   border: none;
   cursor: pointer;
+  animation: fadeIn 4s;
 }
 .newgame:hover {
   scale: 1.1;
@@ -44,4 +49,15 @@
   font-size: 30px;
   color: green;
   margin-top: 40px;
+}
+.fade-in-heading {
+  animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
