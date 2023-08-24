@@ -6,9 +6,9 @@ function GameBoard() {
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState("");
 
-  useEffect(()=>{
-    checkWinner()
-  },[board])
+  useEffect(() => {
+    checkWinner();
+  }, [board]);
 
   const handleClick = (index) => {
     if (board[index] === "" && !winner) {
@@ -61,8 +61,10 @@ function GameBoard() {
   };
 
   return (
-    <div>
-      <h1 className="heading">Tic Tac Toe</h1>
+    <div className="tictactoegame">
+      <div>
+        <h1 className="heading">Welcome To Tic-Tac-Toe</h1>
+      </div>
       <div className="winnername">{renderWinnerMessage()}</div>
       <div className="game_board">
         {board?.map((value, index) => {

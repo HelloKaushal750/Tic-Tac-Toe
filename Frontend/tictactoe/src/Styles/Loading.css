@@ -1,0 +1,25 @@
+.tictactoe_game {
+  background-image: url("https://wallpaperaccess.com/full/4180431.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes zoominoutsinglefeatured {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.cardcontainer img {
+  animation: zoominoutsinglefeatured 2s infinite;
+}
