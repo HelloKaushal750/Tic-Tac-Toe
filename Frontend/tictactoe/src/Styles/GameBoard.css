@@ -20,6 +20,7 @@
   margin-top: 60px;
   animation: fadeIn 4s;
 }
+
 .game_board button {
   font-size: 50px;
   font-weight: 900;
@@ -34,21 +35,32 @@
 .newgame {
   font-size: 20px;
   border-radius: 15px;
-  background-color: red;
+  background-color: black;
   margin-top: 60px;
   padding: 10px;
   color: white;
-  border: none;
+  border: 1px solid rgb(2, 230, 2);
   cursor: pointer;
   animation: fadeIn 4s;
+  font-weight: 600;
 }
-.newgame:hover {
-  scale: 1.1;
-}
+
 .winnername {
   font-size: 30px;
   color: green;
   margin-top: 40px;
+}
+.winner{
+  font-size: 40px;
+  color: yellow;
+  font-weight: 900;
+  animation: fadeIn 4s;
+}
+.draw{
+  font-size: 40px;
+  color: yellow;
+  font-weight: 900;
+  animation: fadeIn 2s;
 }
 .fade-in-heading {
   animation: fadeIn 5s;
