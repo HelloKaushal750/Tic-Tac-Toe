@@ -20,6 +20,5 @@ const port = process.env.PORT;
 connection.then(() => {
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-    console.log("Connected to DB");
   });
 });
