@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import "../Styles/GameBoard.css";
 import Confetti from "react-confetti";
 import axios from "axios";
+import { useDisclosure } from "@chakra-ui/react";
+import AllGames from "./AllGames";
 
 function GameBoard() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [board, setBoard] = useState(Array(9).fill(""));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState("");
   const [boolean, setBoolean] = useState(true);
-  // const { width, height } = useWindowSize();
+  const [previous, setPrevious] = useState([]);
 
   useEffect(() => {
     console.log(boolean);
@@ -40,7 +43,10 @@ function GameBoard() {
       const [a, b, c] = combination;
       if (board[a] !== "" && board[a] === board[b] && board[a] === board[c]) {
         axios
-          .post("http://localhost:7000/games", { data: board, winner })
+          .post("http://localhost:7000/games", {
+            data: board,
+            result: `${board[a]} was Winner`,
+          })
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         setWinner(board[a]);
@@ -74,6 +80,17 @@ function GameBoard() {
     setBoolean(true);
   };
 
+  const handlePreviousGame = () => {
+    axios
+      .get("http://localhost:7000/games")
+      .then((res) => {
+        setPrevious(res.data.reverse());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="tictactoegame">
       {(winner === "X" || winner === "O") && <Confetti recycle={false} />}
@@ -84,12 +101,15 @@ function GameBoard() {
         <div
           style={{
             height: "50px",
-            marginTop: "-40px",
+            marginTop: "-10px",
+            marginBottom: "-20px",
             color: "white",
             display: "flex",
             gap: "80px",
             justifyContent: "center",
             animation: "fadeIn 5s",
+            fontSize: "30px",
+            fontWeight: "600",
           }}
         >
           <h1>
@@ -100,7 +120,7 @@ function GameBoard() {
           </h1>
         </div>
       ) : (
-        <div style={{ height: "50px", marginTop: "-40px" }}>
+        <div style={{ height: "50px", marginTop: "-30px" }}>
           {renderWinnerMessage()}
         </div>
       )}
@@ -130,10 +150,22 @@ function GameBoard() {
         <button onClick={handleNewGame} className="newgame">
           New Game
         </button>
-        <button onClick={handleNewGame} className="newgame">
+        <button
+          onClick={() => {
+            handlePreviousGame();
+            onOpen();
+          }}
+          className="newgame"
+        >
           Previous Games
         </button>
       </div>
+      <AllGames
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpen={onOpen}
+        previous={previous}
+      />
     </div>
   );
 }
