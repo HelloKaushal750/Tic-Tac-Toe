@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 8000);
   });
 
   return <div className="App">{isLoading ? <Loading /> : <GameBoard />}</div>;
